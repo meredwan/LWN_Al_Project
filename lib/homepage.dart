@@ -5,7 +5,6 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -100,7 +99,7 @@ class Homepage extends StatelessWidget {
                 SizedBox(width: 10),
                 Container(
                   height: 210,
-                  width: 54,
+                  width: 63,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(5),
