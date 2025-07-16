@@ -10,6 +10,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("1")));
+    return Scaffold(
+      body: Center(
+        child: Text("Bangla Poem", style: TextStyle(color: Colors.brown)),
+      ),
+    );
   }
 }

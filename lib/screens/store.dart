@@ -12,7 +12,7 @@ class _StoreState extends State<Store> {
   Widget build(BuildContext context) {
     return Scaffold (
       body: Center(
-        child: Text("2"),
+        child: Text("English Poem", style: TextStyle(color: Colors.brown))
       ),
     );;
   }
