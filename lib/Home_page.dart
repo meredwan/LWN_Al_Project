@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.brown[500],
         centerTitle: true,
         title: Text(
-          "Learn Flutter",
+          "কবিতা শিখি",
           style: TextStyle(fontSize: 24, color: Colors.white60),
         ),
       ),
@@ -44,13 +44,13 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Colors.brown[400],
             activeIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
-            label: "Home",
+            label: "Bangla Poem",
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.brown[400],
             icon: Icon(Icons.store_outlined),
             activeIcon: Icon(Icons.storefront),
-            label: "Store",
+            label: "English Poem",
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.brown[400],
