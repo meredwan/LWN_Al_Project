@@ -53,13 +53,18 @@ class _profileState extends State<profile> {
                 ),
               ],
             ),
-            Text("Redwan Islam"),
-            Container(
+            SizedBox(height: 10),
+            Text(
+              "Redwan Islam",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
 
+            Container(
               height: 60,
               width: 280,
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.blueAccent,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Center(
@@ -73,6 +78,7 @@ class _profileState extends State<profile> {
                 ),
               ),
             ),
+            SizedBox(height: 20),
             buildContainer(Icons.edit, 'Edit Profile'),
             buildContainer(Icons.lock, 'Add Pin'),
             buildContainer(Icons.settings, 'Setting'),
@@ -97,8 +103,14 @@ class _profileState extends State<profile> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(children: [Icon(icon), SizedBox(width: 5), Text(title)]),
-            Icon(Icons.arrow_forward_ios_rounded),
+            Row(
+              children: [
+                Icon(icon, size: 25,),
+                SizedBox(width: 8),
+                Text(title, style: TextStyle(fontSize: 18)),
+              ],
+            ),
+            Icon(Icons.arrow_forward_ios_rounded, size: 25,),
           ],
         ),
       ),

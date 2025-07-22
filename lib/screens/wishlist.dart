@@ -12,7 +12,7 @@ class _wishlistState extends State<wishlist> {
   Widget build(BuildContext context) {
     return Scaffold (
       body: Center(
-        child:Text("Hindi Poem", style: TextStyle(color: Colors.brown))
+        child:Text("Selected your favorite poem", style: TextStyle(color: Colors.brown, fontSize: 24))
       ),
     );;
   }
