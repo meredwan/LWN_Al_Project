@@ -1,8 +1,8 @@
 
-import 'package:assignment/app..dart';
+import 'package:assignment/notebook_app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const AppUi());
+  runApp(const NoteBook());
 }
 
