@@ -10,23 +10,61 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  TextEditingController newTaskController = TextEditingController();
   List toDo_List = [
+    ["Note Book Apps for Flutter", false],
     ["Build Android apps", false],
-
     ["Build iOS apps", false],
-
   ];
 
-  void checkboxedChanged(bool? value, int index) {
+  void checkedboxChanged(bool? value, int index) {
     setState(() {
       toDo_List[index][1] = !toDo_List[index][1];
     });
   }
 
-  void createNewTask(){
-     showDialog(context: context, builder: (context) {
-       return Dialogbox();
-     },);
+  void clearTextField() {
+    newTaskController.clear();
+  }
+
+  void saveTask() {
+    if (newTaskController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Color(0XFFFFD6BA),
+          content: Text(
+            "Task cannot be empty",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      );
+      Navigator.of(context).pop();
+    } else {
+      setState(() {
+        toDo_List.add([newTaskController.text.trim(), false]);
+      });
+      Navigator.of(context).pop();
+      clearTextField();
+    }
+  }
+
+  void createNewTask() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Dialogbox(
+          controller: newTaskController,
+          save: saveTask,
+          cancel: () => Navigator.pop(context),
+        );
+      },
+    );
+  }
+
+  void deleteTask(int index) {
+    setState(() {
+      toDo_List.removeAt(index);
+    });
   }
 
   @override
@@ -47,7 +85,8 @@ class _HomeViewState extends State<HomeView> {
             return NotebookList(
               taskName: toDo_List[index][0],
               taskCompleted: toDo_List[index][1],
-              onChange: (value) => checkboxedChanged(value, index),
+              onChange: (value) => checkedboxChanged(value, index),
+              delete: (p0) => deleteTask(index),
             );
           },
         ),
@@ -58,6 +97,5 @@ class _HomeViewState extends State<HomeView> {
         child: Icon(Icons.add),
       ),
     );
-
   }
 }
