@@ -1,161 +1,210 @@
-import 'package:assignment/screens/details_screens.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+import 'details_screens.dart';
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  List<Map> items = [
-    {
-      "name": "Mountain View",
-      "image": "https://picsum.photos/id/1015/400/300",
-      "description": "A breathtaking view of tall mountains touching the clouds."
-    },
-    {
-      "name": "Forest Path",
-      "image": "https://picsum.photos/id/1018/400/300",
-      "description": "A peaceful walking path surrounded by lush green trees."
-    },
-    {
-      "name": "City Skyline",
-      "image": "https://picsum.photos/id/1025/400/300",
-      "description": "A vibrant city skyline glowing under the evening lights."
-    },
-    {
-      "name": "Ocean Waves",
-      "image": "https://picsum.photos/id/1003/400/300",
-      "description": "Strong waves crashing against the rocky shore."
-    },
-    {
-      "name": "Sunny Beach",
-      "image": "https://picsum.photos/id/1062/400/300",
-      "description": "Golden sands and blue waters under the warm sunshine."
-    },
-    {
-      "name": "Snowy Peak",
-      "image": "https://picsum.photos/id/1074/400/300",
-      "description": "A tall mountain peak covered in fresh white snow."
-    },
-    {
-      "name": "Desert Road",
-      "image": "https://picsum.photos/id/1084/400/300",
-      "description": "A long empty road stretching through the desert."
-    },
-    {
-      "name": "Green Valley",
-      "image": "https://picsum.photos/id/1080/400/300",
-      "description": "A calm valley with green grass and rolling hills."
-    },
-    {
-      "name": "Sunset Glow",
-      "image": "https://picsum.photos/id/1076/400/300",
-      "description": "The warm glow of a sunset reflecting over the water."
-    },
-    {
-      "name": "Bridge Over Water",
-      "image": "https://picsum.photos/id/1071/400/300",
-      "description": "A beautiful bridge stretching across a calm river."
-    },
-    {
-      "name": "Morning Lake",
-      "image": "https://picsum.photos/id/1024/400/300",
-      "description": "A quiet lake with mist rising in the early morning."
-    },
-    {
-      "name": "Old Street",
-      "image": "https://picsum.photos/id/1014/400/300",
-      "description": "A charming old street filled with history and life."
-    },
-    {
-      "name": "Golden Field",
-      "image": "https://picsum.photos/id/1001/400/300",
-      "description": "A wide field of golden wheat under the summer sun."
-    },
-    {
-      "name": "Flower Garden",
-      "image": "https://picsum.photos/id/999/400/300",
-      "description": "A colorful garden full of blooming flowers."
-    },
-    {
-      "name": "Foggy Forest",
-      "image": "https://picsum.photos/id/998/400/300",
-      "description": "A mysterious forest covered in thick fog."
-    },
-    {
-      "name": "Rocky Shore",
-      "image": "https://picsum.photos/id/997/400/300",
-      "description": "Large rocks along the coastline with waves hitting them."
-    },
-    {
-      "name": "Lighthouse View",
-      "image": "https://picsum.photos/id/996/400/300",
-      "description": "A lighthouse standing tall beside the sea."
-    },
-    {
-      "name": "Countryside",
-      "image": "https://picsum.photos/id/995/400/300",
-      "description": "A peaceful countryside with green fields and farms."
-    },
-    {
-      "name": "Night Sky",
-      "image": "https://picsum.photos/id/994/400/300",
-      "description": "A sky full of bright stars on a clear night."
-    },
-    {
-      "name": "Riverside",
-      "image": "https://picsum.photos/id/993/400/300",
-      "description": "A calm river flowing gently beside the trees."
-    },
-  ];
-
+/// Home Screen
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final categories = ["All", "Combos", "Sliders", "Chicken"];
+    final burgers = [
+      {
+        "title": "Cheeseburger Wendy’s Burger",
+        "rating": 4.9,
+        "image": "assets/images/image 9.png",
+      },
+      {
+        "title": "Hamburger Veggie Burger",
+        "rating": 4.6,
+        "image": "assets/images/image 9.png",
+      },
+      {
+        "title": "Hamburger Chicken Burger",
+        "rating": 4.5,
+        "image": "assets/images/image 9.png",
+      },
+      {
+        "title": "Cheeseburger Wendy’s Burger",
+        "rating": 4.9,
+        "image": "assets/images/image 9.png",
+      },
+      {
+        "title": "Hamburger Veggie Burger",
+        "rating": 4.6,
+        "image": "assets/images/image 9.png",
+      },
+      {
+        "title": "Hamburger Chicken Burger",
+        "rating": 4.5,
+        "image": "assets/images/image 9.png",
+      },
+    ];
+
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.grey,
-        centerTitle: true,
+        backgroundColor: Colors.white,
         title: Text(
-          "Grid View",
-          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          "Foodgo",
+          style: GoogleFonts.lobster(textStyle: TextStyle(fontSize: 45)),
         ),
+        actions: const [
+          CircleAvatar(backgroundImage: AssetImage("assets/user.png")),
+          SizedBox(width: 10),
+        ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          itemCount: items.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 15,
-          ),
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:
-                        (context) => DetailsScreens(name: items[index]),
-                  ),
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(items[index]['image']),
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// Search Bar
+            Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.search),
+                      hintText: "Search",
+                      filled: true,
+                      fillColor: Colors.grey[200],
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
                   ),
                 ),
+                SizedBox(width: 10),
+                Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    color: Color(0XFFef2a39),
+                    borderRadius: BorderRadius.circular(22),
+                  ),
+                  child: Center(
+                    child: Icon(Icons.menu, color: Colors.white, size: 30),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+
+            /// Categories
+            SizedBox(
+              height: 40,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: index == 0 ? Colors.red : Colors.grey[200],
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                      child: Text(
+                        categories[index],
+                        style: TextStyle(
+                          color: index == 0 ? Colors.white : Colors.black,
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
-            );
-          },
+            ),
+            const SizedBox(height: 15),
+
+            /// Burger Grid
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 0.8,
+                ),
+                itemCount: burgers.length,
+                itemBuilder: (context, index) {
+                  final burger = burgers[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => ProductScreen(burger: burger),
+                        ),
+                      );
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      elevation: 3,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset("assets/images/sp-1.png", height: 80),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "${burger["title"]}",
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("⭐ ${burger["rating"]}"),
+                                Icon(Icons.favorite_border),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showUnselectedLabels: true,
+        selectedItemColor: Color(0XFFef2a39),
+        unselectedItemColor: Colors.grey,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Message'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: 'Favorite',
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red,
+        onPressed: () {},
+        child: const Icon(Icons.add, color: Colors.white, size: 35),
       ),
     );
   }
