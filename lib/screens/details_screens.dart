@@ -71,7 +71,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [Text("Mild"), SizedBox(width: 50,), Text("Hot")],
+                          children: [Text("Mild", style: TextStyle(color: Colors.red),), SizedBox(width: 50,), Text("Hot")],
                         ),
                       ],
                     ),
