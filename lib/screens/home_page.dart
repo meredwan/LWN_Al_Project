@@ -1,6 +1,9 @@
+import 'package:assignment/controller/note_controller.dart';
+import 'package:assignment/model/note_model.dart';
 import 'package:assignment/screens/favourite_screen.dart';
 import 'package:assignment/screens/note_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,14 +14,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  NoteController noteController = Get.put(NoteController());
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController disController = TextEditingController();
   int currentIndex = 0;
   List<Widget> pages = [NoteScreen(), FavouriteScreen()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.brown, title: Text("Notes")),
-      body: Column(children: []),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.brown,
+        title: Text(
+          "Notes",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: pages[currentIndex],
       bottomNavigationBar: GNav(
         onTabChange: (value) {
           setState(() {
@@ -55,13 +72,16 @@ class _HomePageState extends State<HomePage> {
         return Center(
           child: SingleChildScrollView(
             child: AlertDialog(
+              backgroundColor: Colors.grey[300],
               title: Text("Create a Note"),
               content: Column(
                 children: [
                   TextFormField(
+                    controller: titleController,
                     decoration: InputDecoration(hintText: "Enter a Title"),
                   ),
                   TextFormField(
+                    controller: disController,
                     decoration: InputDecoration(
                       hintText: "Enter a Describetion",
                     ),
@@ -70,7 +90,10 @@ class _HomePageState extends State<HomePage> {
               ),
               actions: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                    clearTextField();
+                  },
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.brown,
                     foregroundColor: Colors.white,
@@ -78,7 +101,22 @@ class _HomePageState extends State<HomePage> {
                   child: Text("Cancel"),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    noteController.addNote(
+                      NoteModel(
+                        titleController.text,
+                        disController.text,
+                        DateTime.now().toString(),
+                      ),
+                    );
+                    Get.snackbar(
+                      backgroundColor: Colors.grey[300],
+                        snackPosition: SnackPosition.BOTTOM,
+                        "Notes", "Notes Item Added");
+
+                    Navigator.pop(context);
+                    clearTextField();
+                  },
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.brown,
                     foregroundColor: Colors.white,
@@ -91,5 +129,10 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
+  }
+
+  void clearTextField() {
+    titleController.clear();
+    disController.clear();
   }
 }
