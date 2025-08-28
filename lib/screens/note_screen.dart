@@ -1,6 +1,5 @@
 import 'package:assignment/controller/note_controller.dart';
 import 'package:assignment/model/note_model.dart';
-import 'package:assignment/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';

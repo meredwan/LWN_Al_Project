@@ -7,8 +7,6 @@ class NoteController extends GetxController {
   final Box box = Hive.box('notes');
   final Box favBox = Hive.box('fav');
 
-  List<NoteModel> favorite = [];
-
   void addNote(NoteModel note) {
     box.add(note);
     update();
@@ -33,7 +31,8 @@ class NoteController extends GetxController {
     favBox.deleteAt(index);
     update();
   }
-  void copyText(String text){
+
+  void copyText(String text) {
     Clipboard.setData(ClipboardData(text: text));
     update();
   }

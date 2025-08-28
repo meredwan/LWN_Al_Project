@@ -102,17 +102,29 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    noteController.addNote(
-                      NoteModel(
-                        titleController.text,
-                        disController.text,
-                        DateTime.now().toString(),
-                      ),
-                    );
-                    Get.snackbar(
-                      backgroundColor: Colors.grey[300],
+                    if (titleController.text.isEmpty &&
+                        disController.text.isEmpty) {
+                      Get.snackbar(
                         snackPosition: SnackPosition.BOTTOM,
-                        "Notes", "Notes Item Added");
+                        backgroundColor: Colors.red,
+                        "Error",
+                        "Enter Your Title And Describetion",
+                      );
+                    } else {
+                      noteController.addNote(
+                        NoteModel(
+                          titleController.text,
+                          disController.text,
+                          DateTime.now().toString(),
+                        ),
+                      );
+                      Get.snackbar(
+                        backgroundColor: Colors.grey[300],
+                        snackPosition: SnackPosition.BOTTOM,
+                        "Notes",
+                        "Notes Item Added",
+                      );
+                    }
 
                     Navigator.pop(context);
                     clearTextField();
